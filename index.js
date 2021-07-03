@@ -2,6 +2,8 @@ const express = require('express')
 const server = express()
 server.use(express.json({limit: '20mb'}));
 server.use(express.urlencoded({ extended: false, limit: '20mb' }))
+server.set('view engine', 'ejs')
+server.set("views",__dirname + "/views")
 const list = [ {name: 'cat', size: 'medium', age_in_days: '17'},
 {name: 'rat',size: 'small', age_in_days: '19'},
 {name: 'turtle',size: 'small', age_in_days: '19'},
@@ -16,7 +18,7 @@ server.listen(4000, function() {
 });
 
 server.get('/', function(req,res) {
-    res.sendFile('view/index.html', {root: __dirname})
+    res.render("index", {animal : list[5]})
 });
 
 server.get('/requestAnimal', function(req,res) {
