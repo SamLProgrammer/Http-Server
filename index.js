@@ -1,3 +1,4 @@
+const { json } = require('body-parser');
 const express = require('express')
 const server = express()
 server.use(express.json({limit: '20mb'}));
@@ -18,7 +19,7 @@ server.listen(4000, function() {
 });
 
 server.get('/', function(req,res) {
-    res.render("index", {animal : list[5]})
+    res.render("index", {animal : list[0]})
 });
 
 server.get('/requestAnimal', function(req,res) {
@@ -29,4 +30,18 @@ server.get('/requestAnimal', function(req,res) {
     } else {
         res.send('Lets try a different index number')
     }
+});
+
+server.post('/postAnimal', function(req,res) {
+    const animalKind = req.body.inputAnimalKind;
+    const animalsize = req.body.inputAnimalSize;
+    const animalAge = req.body.inputAnimalDays;
+    if(animalAge > 0) {
+
+        list.push({name: animalKind,size: animalsize, age_in_days: animalAge})
+        res.send(JSON.stringify(list[list.length -1]));
+    } else {
+        res.send('Lets try a different index number')
+    }    
+    console.log(JSON.stringify(animalKind));
 });
