@@ -2,6 +2,7 @@ const { json } = require('body-parser');
 const express = require('express')
 const animalGetter = require('./getAnimal');
 const animalPoster = require('./postAnimal');
+const animalDeleter = require('./deleteAnimal');
 const animalsCrud = require('./crudContainer');
 const server = express()
 const routes = require('./routes/routes');
@@ -19,8 +20,12 @@ animalGetter.get(server,animalsCrud);
 
 animalPoster.post(server,animalsCrud);
 
+animalDeleter.delete(server, animalsCrud);
+
+
 routes.get(server, '/', "index");
 
 routes.get(server, '/other', "index")
 
 routes.get(server, '/postAnimal', "postAnimal")
+

@@ -10,11 +10,15 @@
   <form action="/requestAnimal" method="GET">
     <h1>Lets Adopt a Surprise Animal</h1>
     <h2>Give us a 1 digit number</h2>
-    <input type="text" name="animalIndex" placeholder="Enter Index to Get Data"/>
+    <input type="text" name="getAnimalIndex" placeholder="Enter Index to Get Data"/>
     <input type="submit" value="Get Animal"/>
   </form>
   <form action="/postAnimal" method="GET">
     <input type="submit" value="Post Animal"/>
+  </form>
+  <form action = "/deleteAnimal" method = "DELETE">
+    <input type="text" name="deleteAnimalIndex" placeholder="Enter Index to Remove an Animal"/>
+    <input type="submit" value="Remove Animal"/>
   </form>
 </body>
 </html>

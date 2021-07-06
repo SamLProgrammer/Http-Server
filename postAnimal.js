@@ -6,7 +6,7 @@ module.exports = {
             const animalAge = req.body.inputAnimalDays;
             if(animalAge > 0 && animalAge < 30) {
                 list.push({animalKind, animalsize, animalAge})
-                res.send(JSON.stringify(list[list.length -1]));
+                res.send(JSON.stringify(list));
             } else {
                 res.send('invalid input data')
             }
